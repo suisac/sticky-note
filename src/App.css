@@ -1,38 +1,124 @@
-.App {
-  text-align: center;
+/* App.css */
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f5e1bf;
+  padding: 20px;
+  position: relative;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.note {
+  background-color: #ffeeba;
+  padding: 0px;
+  margin: 10px 0;
+  border: 1px solid #ffc107;
+  position: relative;
+  cursor: grab;
+  height: 200px;
+  width: 200px; /* Adjust the width of the note */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.add-info-div{
+  display:flex;
+  justify-content: space-between;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.add-note-button{
+  color: #ff9807;
+  background-color: transparent;
+  font-size: 35px;
+  border: none;
+  z-index:2;
+  margin-bottom:5px;
+  margin-right:20px;
+  margin-left:10px;
+}
+
+
+.note.dragging {
+  opacity: 0.5;
+}
+
+.note.pinned {
+  background-color: black;
+  border-color: black;
+}
+
+.notes-text{
+  width: 95%;
+  height: 78.5%;
+  background-color: #ffeeba;
+  overflow-y: auto;
+  resize: none;
+  border:none;
+
+  padding:5px;
+}
+
+.notes-text:focus{
+  outline: none;
+  border:none;
+}
+
+.save-button{
+  margin-left:75%;
+  outline:none;
+  border:none;
+  font-size:25px;
+  background-color: #ffeeba;
+}
+
+.note p {
+  width: 94%;
+  height: 80%;
+  background-color: #ffeeba;
+  padding: 5px;
+  margin: 5px 0;
+  overflow-y: scroll;
+  resize:none;
+  border:none;
+}
+
+.note button:nth-child(2) {
+  margin-right: 5px;
+}
+
+.note-header {
+  background-color: #ffac07;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  margin: 5px;
+}
+
+.note button.pin-button,
+.note button.note-button {
+  background-color:  #ffac07;
   color: white;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.tooltip{
+  background-color: black;
+  color:white;
+  opacity:0.7;
+  width:18%;
+  position:fixed;
+  top:10px;
+  right:55px;
+  padding:5px;
+  border-radius: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tooltip h3{
+  text-align:center
+}
+
+.tooltip li{
+  padding-top:2px;
+  font-size:small;
 }
