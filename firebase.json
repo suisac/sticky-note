@@ -1,6 +1,5 @@
 {
   "hosting": {
-    "site": "sticky-notes-f7a5d",
     "public": "build",
     "ignore": [
       "firebase.json",
