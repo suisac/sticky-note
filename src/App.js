@@ -3,7 +3,7 @@ import './App.css';
 import Note from './Note';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquarePlus, faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
-import { showInstruction,checkOverlapWithPinnedNotes } from './helper';
+import { showInstruction } from './helper';
 
 function App() {
 
@@ -49,12 +49,41 @@ function App() {
       position: generateRandomPosition(),
     };
     
-    while(checkOverlapWithPinnedNotes(newNote,noteSize,pinnedNotes) && attempts<maxAttempts){
+    while(checkOverlapWithPinnedNotes(newNote) && attempts<maxAttempts){
       newNote.position=generateRandomPosition();
       attempts++;
     }
 
     attempts<=500 && setNotes([...notes, newNote]);
+  };
+
+  const checkOverlapWithPinnedNotes = (newNote) => {
+    const noteBounds = {
+      left: newNote.position.x,
+      right: newNote.position.x + noteSize.width,
+      top: newNote.position.y,
+      bottom: newNote.position.y + noteSize.height,
+    };
+
+    for (const pinnedNote of pinnedNotes) {
+      const pinnedNoteBounds = {
+        left: pinnedNote.position.x,
+        right: pinnedNote.position.x + noteSize.width,
+        top: pinnedNote.position.y,
+        bottom: pinnedNote.position.y + noteSize.height,
+      };
+
+      if (
+        noteBounds.left < pinnedNoteBounds.right &&
+        noteBounds.right > pinnedNoteBounds.left &&
+        noteBounds.top < pinnedNoteBounds.bottom &&
+        noteBounds.bottom > pinnedNoteBounds.top
+      ) {
+        return true;
+      }
+    }
+
+    return false;
   };
 
 

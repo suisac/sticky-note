@@ -28,32 +28,3 @@ export const showInstruction=()=>{
         </div>
     )
 }
-
-export  const checkOverlapWithPinnedNotes = (newNote,noteSize,pinnedNotes) => {
-    const noteBounds = {
-      left: newNote.position.x,
-      right: newNote.position.x + noteSize.width,
-      top: newNote.position.y,
-      bottom: newNote.position.y + noteSize.height,
-    };
-
-    for (const pinnedNote of pinnedNotes) {
-      const pinnedNoteBounds = {
-        left: pinnedNote.position.x,
-        right: pinnedNote.position.x + noteSize.width,
-        top: pinnedNote.position.y,
-        bottom: pinnedNote.position.y + noteSize.height,
-      };
-
-      if (
-        noteBounds.left < pinnedNoteBounds.right &&
-        noteBounds.right > pinnedNoteBounds.left &&
-        noteBounds.top < pinnedNoteBounds.bottom &&
-        noteBounds.bottom > pinnedNoteBounds.top
-      ) {
-        return true;
-      }
-    }
-
-    return false;
-  };
