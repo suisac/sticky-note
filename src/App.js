@@ -89,6 +89,7 @@ function App() {
 
   const deleteNote = (id) => {
     setNotes(notes.filter((note) => note.id !== id));
+    setPinnedNotes(pinnedNotes.filter((note)=>note.id!==id));
   };
 
   const handlePinToggle = (id) => {
